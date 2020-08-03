@@ -12,7 +12,7 @@ const API ={
 class Main extends React.Component {
     render() {
         return (
-            <div className="App">
+            <div className="abc">
                 <h1>How's the weather</h1>
                 <div className="icon sun-shower">
                     <div className="cloud"></div>

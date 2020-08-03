@@ -6,11 +6,27 @@ body {
   max-width: 42em;
   padding: 2em;
   margin: 0 auto;
-  color: #161616;
+  color: rosybrown ;
   font-family: 'Roboto', sans-serif;
   text-align: center;
   background-color: currentColor;
 }
+
+.location{
+  color: black;
+
+}
+
+.date{
+  color: black;
+}
+
+.temp, .weather{
+  color: black;
+  z-index: 1;
+}
+
+
 
 
 
