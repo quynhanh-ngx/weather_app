@@ -12,22 +12,52 @@ body {
   background-color: currentColor;
 }
 
-.location{
-  color: black;
-
-}
-
-.date{
-  color: black;
-}
-
 .temp, .weather{
   color: black;
   z-index: 1;
 }
 
+.search-box{
+  width: 100%;
+  margin: 0 0 75px;
+}
 
+.location{
+  color: greenyellow;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  padding-bottom: 25px;
+}
 
+.date{
+  color: #FFF;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+  padding: 15px 25px;
+}
 
+.temp {
+   position: relative;
+   display: inline-block;
+   margin: 30px auto;
+   color: #FFF;
+   font-size: 102px;
+   font-weight: 900;
+   text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+   text-align: center;
+   padding: 15px 25px;
+ }
 
+.weather {
+  color: #FFF;
+  font-size: 48px;
+  font-weight: 700;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  padding: 15px 25px;
+}
 
