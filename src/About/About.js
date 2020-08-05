@@ -3,6 +3,7 @@ import './About.css';
 import _ from 'lodash';
 import {Button, Card, CardContent, CardDescription, CardGroup, Search} from "semantic-ui-react";
 import {WEATHER_API_KEY} from "../secrets";
+import citiesList from "../city.list.clean.json";
 
 const API = {
     key: WEATHER_API_KEY,
@@ -40,7 +41,9 @@ const date = (d) => {
 
     return `${day}, ${date} ${month} ${year}`
 }
-
+const searchKey = (city) =>{
+    return city.title.toLowerCase().replace(" ", "")
+}
 
 class About extends React.Component {
 
@@ -55,7 +58,8 @@ class About extends React.Component {
             q: "Charlotte",
             humidity: "",
             feels_like: "",
-            country: ""
+            country: "",
+            cities: []
         };
     }
 
@@ -87,7 +91,8 @@ class About extends React.Component {
                         weather: '',
                         feels_like: '',
                         humidity: '',
-                        country: ''
+                        country: '',
+                        cities: []
                     });
                     return;
                 }
@@ -116,6 +121,7 @@ class About extends React.Component {
         this.setState({q: value}, () => this.getWeather(e));
     }
 
+    // a toggle button that converts temperature
     handleToggle = () => {
         if (this.state.unit === 'C') {
             let feel = this.state.feels_like;
@@ -152,6 +158,18 @@ class About extends React.Component {
 
 
     render() {
+        // Filter search
+        const cities = [];
+        for (const cityIndex in citiesList) {
+            if(this.state.q.length < 4){
+                break;
+            }
+            let city = citiesList[cityIndex];
+            if(searchKey(city).includes(this.state.q.toLowerCase())) {
+                cities.push(city);
+            }
+
+        }
         return (
             <div className="App">
                 <Search className="search-box"
@@ -161,18 +179,18 @@ class About extends React.Component {
                         onSearchChange={_.debounce(this.handleSearchChange, 500, {
                             leading: true,
                         })}
-                        results={[{title: 'Charlotte'}, {title: 'Hanoi, Vietnam'}]}
+                        results={cities}
                         value={this.state.q}
                 />
                 <div className='location'>{this.state.city}, {this.state.country}</div>
                 <div className='date'>{this.state.date}</div>
-                <div className="temp">{this.state.temperature}°</div>
+                <div className="temp">{this.state.temperature}°{this.state.unit}</div>
                 <Button toggle onClick={this.handleToggle}>
                     °C/°F
                 </Button>
                 <div className='weather'>{this.state.weather}</div>
-                <CardGroup>
-                    <Card>
+                <CardGroup centered>
+                    <Card className="card1">
                         <CardContent>
                             <Card.Header>Humidity</Card.Header>
                             <CardDescription>
