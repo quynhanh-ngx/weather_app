@@ -1,67 +1,241 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 body {
-  max-width: 42em;
-  padding: 2em;
-  margin: 0 auto;
-  color: rosybrown ;
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  background-color: currentColor;
+    max-width: 42em;
+    padding: 2em;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    background-color: #130f40;
+    background-image: linear-gradient(315deg, #130f40 0%, #000000 74%);
 }
 
-.temp, .weather{
-  color: black;
-  z-index: 1;
+.temp, .weather {
+    color: black;
+    z-index: 1;
 }
 
-.search-box{
-  width: 100%;
-  margin: 0 0 75px;
+.location {
+    color: greenyellow;
+    font-size: 32px;
+    font-weight: 500;
+    text-align: center;
+    text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+    padding-bottom: 25px;
+    padding-top: 25px;
+    position: relative;
+    z-index: 1;
+
 }
 
-.location{
-  color: greenyellow;
-  font-size: 32px;
-  font-weight: 500;
-  text-align: center;
-  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
-  padding-bottom: 25px;
-}
-
-.date{
-  color: #FFF;
-  font-size: 20px;
-  font-weight: 300;
-  font-style: italic;
-  text-align: center;
-  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
-  padding: 15px 25px;
+.date {
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    text-align: center;
+    text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+    padding: 15px 25px;
+    position: relative;
+    z-index: 1;
 }
 
 .temp {
-   position: relative;
-   display: inline-block;
-   margin: 30px auto;
-   color: #FFF;
-   font-size: 102px;
-   font-weight: 900;
-   text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
-   text-align: center;
-   padding: 15px 25px;
- }
+    position: relative;
+    display: inline-block;
+    margin: 30px auto;
+    color: #FFF;
+    font-size: 50px;
+    font-weight: 900;
+    text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+    text-align: center;
+    padding: 15px 25px;
+    position: relative;
+    z-index: 1;
+}
 
 .weather {
-  color: #FFF;
-  font-size: 48px;
-  font-weight: 700;
-  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
-  padding: 15px 25px;
+    color: #FFF;
+    font-size: 48px;
+    font-weight: 700;
+    text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+    padding: 15px 25px;
+    position: relative;
+    z-index: 1;
 }
 
-.card1 {
-  color: #161616;
+.search-box {
+    padding-bottom: 1em;
 }
+
+.search-box > .input {
+    height: 2em;
+}
+
+.back-button {
+    padding-top: 5em;
+    position: relative;
+    z-index: 1;
+}
+
+.card-group {
+    padding-top: 3em;
+}
+
+.clouds-container {
+    position: relative;
+    height: 100vh;
+    padding-top: 50px;
+    overflow: hidden;
+}
+
+.cloud {
+    position: relative;
+    width: 150px;
+    height: 50px;
+    background: white;
+    border-radius: 100px;
+    border-bottom: 3px solid grey;
+    left: -20%;
+}
+
+
+.cloud::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 150%;
+    left: 13%;
+    top: -60%;
+    background: white;
+    background: -webkit-linear-gradient(#e6f0f2, white 30%);
+    background: -o-linear-gradient(#e6f0f2, white 30%);
+    background: linear-gradient(#e6f0f2, white 30%);
+    border-radius: 50%;
+}
+
+
+.cloud::after {
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 80%;
+    right: 15%;
+    top: -25%;
+    background: white;
+    background: -webkit-linear-gradient(#e6f0f2, white 20%);
+      background: -o-linear-gradient(#e6f0f2, white 20%);
+    background: linear-gradient(#e6f0f2, white 20%);
+    border-radius: 50%;
+}
+
+
+.cloud .shadow {
+    width: 80%;
+    position: absolute;
+    bottom: -10%;
+    left: 5%;
+    z-index: -1;
+    box-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+}
+
+.is-small {
+    width: 75px;
+    height: 25px;
+}
+
+.is-medium {
+    width: 150px;
+    height: 50px;
+}
+
+.is-large {
+    width: 240px;
+    height: 80px;
+}
+
+.cloud.slow {
+    -o-animation: float 45s infinite linear;
+    -moz-animation: float 45s infinite linear;
+    -webkit-animation: float 45s infinite linear;
+    animation: float 45s infinite linear;
+}
+
+.cloud.medium {
+    -o-animation: float 35s infinite linear;
+    -moz-animation: float 35s infinite linear;
+    -webkit-animation: float 35s infinite linear;
+    animation: float 35s infinite linear;
+}
+
+.cloud.fast {
+    -o-animation: float 25s infinite linear;
+    -moz-animation: float 25s infinite linear;
+    -webkit-animation: float 25s infinite linear;
+    animation: float 25s infinite linear;
+}
+
+.delay-1 {
+    animation-delay: 1s;
+}
+
+.delay-2 {
+    animation-delay: 2s;
+}
+
+.delay-3 {
+    animation-delay: 3s;
+}
+
+.delay-4 {
+    animation-delay: 4s;
+}
+
+.delay-5 {
+    animation-delay: 5s;
+}
+
+.delay-6 {
+    animation-delay: 6s;
+}
+
+@keyframes float {
+    0% {
+        left: -20%;
+    }
+    100% {
+        left: 110%;
+    }
+}
+
+.clouds {
+    max-width: 100vw;
+    height: 0;
+    z-index: 0;
+}
+
+.temp-button{
+    position: relative;
+    z-index: 1;
+
+}
+
+.ui.cards > .card{
+    background-color: transparent;
+}
+.ui.cards > .card > .content > .header:not(.ui), .ui.card > .content > .header:not(.ui) {
+    text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+    color: teal;
+}
+
+.ui.cards > .card > .content > .meta + .description, .ui.cards > .card > .content > .header + .description, .ui.card > .content > .meta + .description, .ui.card > .content > .header + .description {
+    color: greenyellow;
+}
+
+
+
+
 

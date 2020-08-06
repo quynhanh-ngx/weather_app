@@ -15,7 +15,7 @@ class Main extends React.Component {
             <div className="abc">
                 <h1>How's the weather</h1>
                 <div className="icon sun-shower">
-                    <div className="cloud"></div>
+                    <div className="cloud1"></div>
                     <div className="sun">
                         <div className="rays"></div>
                     </div>
@@ -23,7 +23,7 @@ class Main extends React.Component {
                 </div>
 
                 <div className="icon thunder-storm">
-                    <div className="cloud"></div>
+                    <div className="cloud1"></div>
                     <div className="lightning">
                         <div className="bolt"></div>
                         <div className="bolt"></div>
@@ -31,12 +31,12 @@ class Main extends React.Component {
                 </div>
 
                 <div className="icon cloudy">
-                    <div className="cloud"></div>
-                    <div className="cloud"></div>
+                    <div className="cloud1"></div>
+                    <div className="cloud1"></div>
                 </div>
 
                 <div className="icon flurries">
-                    <div className="cloud"></div>
+                    <div className="cloud1"></div>
                     <div className="snow">
                         <div className="flake"></div>
                         <div className="flake"></div>
@@ -50,7 +50,7 @@ class Main extends React.Component {
                 </div>
 
                 <div className="icon rainy">
-                    <div className="cloud"></div>
+                    <div className="cloud1"></div>
                     <div className="rain"></div>
                 </div>
                 <Button inverted color='teal'

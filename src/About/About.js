@@ -1,13 +1,49 @@
 import React from 'react';
 import './About.css';
 import _ from 'lodash';
-import {Button, Card, CardContent, CardDescription, CardGroup, Search} from "semantic-ui-react";
+import {Button, Card, CardContent, CardDescription, CardGroup, Grid, Icon, Search} from "semantic-ui-react";
 import {WEATHER_API_KEY} from "../secrets";
 import citiesList from "../city.list.clean.json";
+import history from "../history";
 
 const API = {
     key: WEATHER_API_KEY,
     base: 'http://api.openweathermap.org/data/2.5/'
+}
+
+function Cloud(props) {
+    let speedClass;
+    let sizeClass;
+    let delayClass;
+
+    switch (props.speed) {
+        case 2:
+            speedClass = "fast";
+            break;
+        case 1:
+            speedClass = "medium";
+            break;
+        default:
+            speedClass = "slow";
+            break;
+    }
+
+    switch (props.size) {
+        case 2:
+            sizeClass = "is-large";
+            break;
+        case 1:
+            sizeClass = "is-medium";
+            break;
+        default:
+            sizeClass = "is-small";
+            break;
+    }
+    delayClass = "delay-" + Math.min(props.delay, 6);
+    let cloudClasses = [speedClass, sizeClass, delayClass];
+
+    return <div className={'cloud ' + cloudClasses.join(" ").trimRight()}><span className="shadow"></span></div>;
+
 }
 
 const date = (d) => {
@@ -146,32 +182,35 @@ class About extends React.Component {
         }
     }
 
-    offsetDate = (offset) => {
-        let d = new Date(new Date().getTime() + (offset * 1000));
-        let hrs = d.getUTCHours();
-        let min = d.getUTCMinutes();
-        let date = d.getDate();
-        let day = d.getUTCDay();
-        let month = d.getUTCMonth();
-        let year = d.getUTCFullYear();
-    }
-
-
     render() {
         // Filter search
         const cities = [];
         for (const cityIndex in citiesList) {
-            if(this.state.q.length < 4){
+            if(this.state.q.length < 2){
                 break;
             }
             let city = citiesList[cityIndex];
             if(searchKey(city).includes(this.state.q.toLowerCase())) {
                 cities.push(city);
             }
+            if(cities.length >= 10){
+                break;
+            }
 
+        }
+
+        //Cloud
+        const cloudCount = 15;
+        let clouds = [];
+        for (let i = 0; i < cloudCount; i++) {
+            let speed = Math.floor(Math.random() * 3);
+            let size = Math.floor(Math.random() * 3);
+            let delay = Math.floor(Math.random() * 7);
+            clouds.push(<Cloud speed={speed} key={i} size={size} delay={delay}/>);
         }
         return (
             <div className="App">
+                <div className="sticky-top clouds" key = {2}>{clouds}</div>
                 <Search className="search-box"
                         placeholder="Search..."
                         loading={false}
@@ -185,12 +224,15 @@ class About extends React.Component {
                 <div className='location'>{this.state.city}, {this.state.country}</div>
                 <div className='date'>{this.state.date}</div>
                 <div className="temp">{this.state.temperature}°{this.state.unit}</div>
-                <Button toggle onClick={this.handleToggle}>
+                <div>
+                <Button inverted color='teal' toggle onClick={this.handleToggle} className="temp-button">
                     °C/°F
                 </Button>
+                </div>
                 <div className='weather'>{this.state.weather}</div>
-                <CardGroup centered>
-                    <Card className="card1">
+                <div className='card-group'>
+                    <CardGroup centered itemsPerRow={2}>
+                    <Card fluid>
                         <CardContent>
                             <Card.Header>Humidity</Card.Header>
                             <CardDescription>
@@ -198,7 +240,7 @@ class About extends React.Component {
                             </CardDescription>
                         </CardContent>
                     </Card>
-                    <Card>
+                    <Card fluid>
                         <CardContent>
                             <Card.Header>Feels Like</Card.Header>
                             <CardDescription>
@@ -207,6 +249,13 @@ class About extends React.Component {
                         </CardContent>
                     </Card>
                 </CardGroup>
+                </div>
+                <div className='back-button'>
+                    <Button inverted color='teal' onClick={() => history.push('/')} >
+                        <Icon name='arrow circle down' size='big'/>
+                        Back
+                    </Button>
+                </div>
             </div>
 
         );

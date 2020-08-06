@@ -28,7 +28,7 @@ h1 {
   font-size: 1em; /* control icon size here */
 }
 
-.cloud {
+.cloud1 {
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -45,7 +45,7 @@ h1 {
           -2.1875em 0.6875em 0 -0.3125em #fff,
           2.0625em 0.9375em 0 -0.5625em #fff;
 }
-.cloud:after {
+.cloud1:after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -56,7 +56,7 @@ h1 {
   background: currentColor;
   box-shadow: 0 0.4375em 0 -0.0625em #fff;
 }
-.cloud:nth-child(2) {
+.cloud1:nth-child(2) {
   z-index: 0;
   background: #fff;
   box-shadow:
@@ -67,9 +67,9 @@ h1 {
           2.0625em 0.9375em 0 -0.5625em #fff;
   opacity: 0.3;
   transform: scale(0.5) translate(6em, -3em);
-  animation: cloud 4s linear infinite;
+  animation: cloud1 4s linear infinite;
 }
-.cloud:nth-child(2):after { background: #fff; }
+.cloud1:nth-child(2):after { background: #fff; }
 
 .sun {
   position: absolute;
@@ -113,7 +113,7 @@ h1 {
 .rays:before {
   transform: rotate(120deg);
 }
-.cloud + .sun {
+.cloud1 + .sun {
   margin: -2em 1em;
 }
 
@@ -241,7 +241,7 @@ h1 {
   100% { transform: rotate(360deg); }
 }
 
-@keyframes cloud {
+@keyframes cloud1 {
   0% { opacity: 0; }
   50% { opacity: 0.3; }
   100% {
