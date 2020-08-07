@@ -161,9 +161,9 @@ class About extends React.Component {
     handleToggle = () => {
         if (this.state.unit === 'C') {
             let feel = this.state.feels_like;
-            let newfeel = Math.round(feel * 1.8 + 32)
+            let newfeel = feel * 1.8 + 32;
             let temp = this.state.temperature;
-            let newtemp = Math.round(temp * 1.8 + 32);
+            let newtemp = temp * 1.8 + 32;
             this.setState({
                 unit: 'F',
                 temperature: newtemp,
@@ -171,9 +171,9 @@ class About extends React.Component {
             })
         } else {
             let feel = this.state.feels_like;
-            let newfeel = Math.round((feel - 32) * (5 / 9));
+            let newfeel = (feel - 32) * (5 / 9);
             let temp = this.state.temperature;
-            let newtemp = Math.round((temp - 32) * (5 / 9));
+            let newtemp = (temp - 32) * (5 / 9);
             this.setState({
                 unit: 'C',
                 temperature: newtemp,
@@ -223,7 +223,7 @@ class About extends React.Component {
                 />
                 <div className='location'>{this.state.city}, {this.state.country}</div>
                 <div className='date'>{this.state.date}</div>
-                <div className="temp">{this.state.temperature}°{this.state.unit}</div>
+                <div className="temp">{Math.round(this.state.temperature)}°{this.state.unit}</div>
                 <div>
                 <Button inverted color='teal' toggle onClick={this.handleToggle} className="temp-button">
                     °C/°F
@@ -244,7 +244,7 @@ class About extends React.Component {
                         <CardContent>
                             <Card.Header>Feels Like</Card.Header>
                             <CardDescription>
-                                {this.state.feels_like}
+                                {Math.round(this.state.feels_like)}°{this.state.unit}
                             </CardDescription>
                         </CardContent>
                     </Card>
